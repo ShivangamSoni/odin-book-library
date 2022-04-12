@@ -35,9 +35,7 @@
           </div>
 
           <div class="bookCard-actions">
-            <button class="bookCard-btn btn" title="Add Box">
-              <img src="./Assets/icons/pencil-box-multiple.svg" alt="Edit Book" />
-            </button>
+            <button class="bookCard-readStatus btn"></button>
             <button class="bookCard-btn btn" title="Delete Book">
               <img src="./Assets/icons/close-box-multiple.svg" alt="Delete Book" />
             </button>
@@ -52,21 +50,21 @@
       <form class="addModal-form">
         <label class="form-control">
           <span class="label">Title</span>
-          <input type="text" required />
+          <input type="text" name="title" required />
         </label>
 
         <label class="form-control">
           <span class="label">Author</span>
-          <input type="text" required />
+          <input type="text" name="author" required />
         </label>
 
         <label class="form-control">
           <span class="label">Pages</span>
-          <input type="number" min="5" step="1" required />
+          <input type="number" min="5" step="1" required name="pages" />
         </label>
 
         <label class="form-control form-check">
-          <input type="checkbox" required />
+          <input type="checkbox" name="read" value="off" />
           <span class="label">Read</span>
         </label>
 

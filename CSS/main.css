@@ -36,6 +36,11 @@ body {
   grid-template-rows: auto 1fr;
 }
 
+.header.hide,
+.main.hide {
+  filter: blur(5px);
+}
+
 /* Header --Start-- */
 .header {
   display: flex;
@@ -138,6 +143,30 @@ body {
 .bookCard-btn:hover {
   transform: translate(0, -5px);
 }
+
+.bookCard-readStatus {
+  height: 15px;
+  width: 30px;
+  border-radius: 50px;
+  position: relative;
+}
+
+.bookCard-readStatus::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(5%, -50%);
+  width: 13px;
+  height: 13px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.bookCard-readStatus.checked::after {
+  transform: translate(130%, -50%);
+  background-color: green;
+}
 /* Main --End-- */
 
 /* Modal --Start-- */
@@ -150,9 +179,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.5);
   transform: scale(0);
-  transition: transform 300ms linear;
+  transition: transform 700ms linear;
 }
 
 .addModal.show {
