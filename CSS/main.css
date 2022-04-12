@@ -12,6 +12,14 @@
   --color: #ffffffde;
   --accent-color: #1a1a1a;
   --card-bg: #2d2d2d;
+  --button-bg: #ff6a00;
+}
+
+:root.light {
+  --bg-color: rgb(237, 237, 237);
+  --color: #000000de;
+  --accent-color: rgb(229, 229, 229);
+  --card-bg: rgb(210, 210, 210);
 }
 
 html,
@@ -26,7 +34,7 @@ body {
   appearance: none;
   border: none;
   outline: none;
-  background-color: var(--color);
+  background-color: var(--button-bg);
   padding: 0.3rem;
   cursor: pointer;
 }
@@ -63,7 +71,14 @@ body {
   margin-left: 10px;
 }
 
-.addBtn {
+.header > .actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.addBtn,
+.themeBtn {
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -72,7 +87,8 @@ body {
   transform: scale(1);
 }
 
-.addBtn:hover {
+.addBtn:hover,
+.themeBtn:hover {
   transform: scale(1.1);
 }
 /* Header --End-- */
@@ -149,6 +165,7 @@ body {
   width: 30px;
   border-radius: 50px;
   position: relative;
+  background-color: var(--color);
 }
 
 .bookCard-readStatus::after {
@@ -190,18 +207,24 @@ body {
 .modal-closeBtn {
   appearance: none;
   border: none;
-  background-color: var(--accent-color);
-  color: var(--color);
+  background-color: var(--color);
+  color: var(--accent-color);
   position: absolute;
   top: 0;
   right: 0;
-  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  border-radius: 7px;
+  font-size: 1rem;
+  font-weight: 600;
   padding: 0.3rem;
   cursor: pointer;
 }
 
 .addModal-form {
-  background-color: var(--accent-color);
+  background-color: var(--card-bg);
   width: min(500px, 96%);
   padding: 20px;
   border-radius: 7px;
@@ -265,6 +288,7 @@ body {
 
 .form-control:last-of-type {
   margin-top: 30px;
+  width: 50%;
 }
 
 .submitBtn {
@@ -273,9 +297,10 @@ body {
   outline: none;
   border-radius: 7px;
   padding: 0.5rem 1rem;
-  width: 50%;
   font-size: 1.2rem;
   font-weight: 600;
+  color: var(--accent-color);
+  background-color: var(--color);
   cursor: pointer;
   position: relative;
   isolation: isolate;
@@ -298,7 +323,7 @@ body {
 }
 
 .submitBtn:hover {
-  color: var(--color);
+  color: #fff;
 }
 
 .submitBtn:hover::after {

@@ -1,45 +1,42 @@
-// Book Class
-const Book = function (title, author, pages, isRead) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.isRead = isRead;
-};
-
-Book.prototype.toggleReadStatus = function () {
-  this.isRead = !this.isRead;
-};
+import Library from "./Modules/Library.js";
+import Book from "./Modules/Book.js";
 
 // Library
-let library = [];
+const library = new Library();
 
-const addBookToLibrary = (book) => {
-  library.push(book);
-};
-const toggleStatus = (e) => {
+const deleteFromLib = (e) => {
   const index = e.target.dataset.id;
-  const book = library[index];
-  book.toggleReadStatus();
+  library.deleteBook(index);
   renderLibrary();
 };
 
-const deleteBook = (e) => {
+const toggleStatus = (e) => {
   const index = e.target.dataset.id;
-  library.splice(index, 1);
+  library.toggleStatusOfBook(index);
   renderLibrary();
 };
 
 // Book List
 const booksList = document.querySelector(".booksList");
 
+// Header & Main
 const header = document.querySelector(".header");
 const main = document.querySelector(".main");
+
+// Theme Button
+const themeBtn = document.querySelector(".themeBtn");
 
 // Modal Elements
 const addBtn = document.querySelector(".addBtn");
 const modal = document.querySelector(".addModal");
 const modalCloseBtn = document.querySelector(".modal-closeBtn");
 const addBookForm = document.querySelector(".addModal-form");
+
+// Toggle Theme
+themeBtn.addEventListener("click", () => {
+  const root = document.querySelector(":root");
+  root.classList.toggle("light");
+});
 
 const clearBookList = () => {
   booksList.innerHTML = "";
@@ -49,14 +46,14 @@ const renderLibrary = () => {
   clearBookList();
 
   const sectionTitle = document.querySelector(".main > .sectionTitle");
-  if (library.length === 0) {
+  if (library.books.length === 0) {
     sectionTitle.textContent = "Your Books (0). Add Some!";
     return;
   } else {
-    sectionTitle.textContent = `Your Books (${library.length}).`;
+    sectionTitle.textContent = `Your Books (${library.books.length}).`;
   }
 
-  library.forEach((book, index) => {
+  library.books.forEach((book, index) => {
     const bookCard = document.createElement("div");
     bookCard.classList.add("bookCard");
 
@@ -99,7 +96,7 @@ const renderLibrary = () => {
     deleteButton.title = "Delete Book";
     deleteButton.innerHTML = `<img src="./Assets/icons/close-box-multiple.svg" alt="Delete Book" />`;
     deleteButton.dataset.id = index;
-    deleteButton.addEventListener("click", deleteBook);
+    deleteButton.addEventListener("click", deleteFromLib);
 
     cardActions.appendChild(readStatusButton);
     cardActions.appendChild(deleteButton);
@@ -125,12 +122,14 @@ const closeAndResetModal = () => {
   });
 };
 
+// Show Modal
 addBtn.addEventListener("click", (e) => {
   header.classList.add("hide");
   main.classList.add("hide");
   modal.classList.add("show");
 });
 
+// Close Modal
 modalCloseBtn.addEventListener("click", closeAndResetModal);
 
 addBookForm.addEventListener("submit", (e) => {
@@ -156,7 +155,7 @@ addBookForm.addEventListener("submit", (e) => {
   });
 
   const book = new Book(formData.title, formData.author, formData.pages, formData.read);
-  addBookToLibrary(book);
+  library.addBook(book);
   renderLibrary();
   closeAndResetModal();
 });

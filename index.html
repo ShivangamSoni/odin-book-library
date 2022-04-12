@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link rel="icon" href="./Assets/icons/library-shelves.svg" />
     <link rel="stylesheet" href="./CSS/main.css" />
-    <script src="./Script/main.js" defer></script>
+    <script src="./Script/main.js" type="module"></script>
 
-    <title>Library</title>
+    <title>Book Library / Organizer</title>
   </head>
   <body>
     <header class="header">
@@ -17,9 +18,15 @@
         <h1>The Book Library</h1>
       </div>
 
-      <button class="btn addBtn" title="Add New Book">
-        <img src="./Assets/icons/plus-box-multiple.svg" alt="Add New Book" />
-      </button>
+      <div class="actions">
+        <button class="btn addBtn" title="Add New Book">
+          <img src="./Assets/icons/plus-box-multiple.svg" alt="Add New Book" />
+        </button>
+
+        <button class="btn themeBtn" title="Change Theme">
+          <img src="./Assets/icons/theme-light-dark.svg" alt="Add New Book" />
+        </button>
+      </div>
     </header>
 
     <main class="main">
@@ -45,7 +52,7 @@
     </main>
 
     <div class="addModal">
-      <button class="modal-closeBtn">X</button>
+      <button class="modal-closeBtn">&times;</button>
 
       <form class="addModal-form">
         <label class="form-control">
