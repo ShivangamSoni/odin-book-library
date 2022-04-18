@@ -1,12 +1,14 @@
-const Book = function (title, author, pages, isRead) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.isRead = isRead;
-};
+const Book = class Book {
+  constructor(title, author, pages, isRead) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.isRead = isRead;
+  }
 
-Book.prototype.toggleReadStatus = function () {
-  this.isRead = !this.isRead;
+  toggleReadStatus() {
+    this.isRead = !this.isRead;
+  }
 };
 
 export default Book;

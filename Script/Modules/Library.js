@@ -1,18 +1,18 @@
-const Library = function () {
-  this.books = [];
-};
+const Library = class Library {
+  books = [];
 
-Library.prototype.addBook = function (book) {
-  this.books.push(book);
-};
+  addBook(book) {
+    this.books.push(book);
+  }
 
-Library.prototype.deleteBook = function (index) {
-  this.books.splice(index, 1);
-};
+  deleteBook(index) {
+    this.books.splice(index, 1);
+  }
 
-Library.prototype.toggleStatusOfBook = function (index) {
-  const book = this.books[index];
-  book.toggleReadStatus();
+  toggleStatusOfBook(index) {
+    const book = this.books[index];
+    book.toggleReadStatus();
+  }
 };
 
 export default Library;
